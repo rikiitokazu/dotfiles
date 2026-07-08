@@ -1,0 +1,68 @@
+# ===============================
+# ZSH
+# ===============================
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+bindkey -v
+bindkey '^?' backward-delete-char
+
+# ===============================
+# FZF
+# ===============================
+eval "$(fzf --zsh)"
+
+# Use fd instead of fzf
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# FZF Git
+source ~/.config/fzf/fzf-git.sh
+
+# FZF Theme
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#3f3f3f,fg+:#3f3f3f,bg:#e7e7e7,bg+:#c7c7c7
+  --color=hl:#0048f0,hl+:#0048f0,info:#6a6a68,marker:#c7c7c7
+  --color=prompt:#0048f0,spinner:#00a098,pointer:#c7c7c7,header:#525252
+  --color=border:#262626,label:#aeaeae,query:#3f3f3f
+  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+  --marker=">" --pointer="*" --separator="" --scrollbar=""'
+
+# FZF Previews
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+
+# ===============================
+# Eza (better ls)
+# ===============================
+alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias la="eza --color=always --long --all --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ll="eza --color=always --long --all --icons=always --no-time"
+alias ld="eza --color=always --long --only-dirs --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias lf="eza --color=always --long --only-files --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias lt="eza --color=always --tree --level=3 --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+# ===============================
+# Zoxide (better cd)
+# ===============================
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# ===============================
+# Starship
+# ===============================
+# https://github.com/starship/starship/issues/3418#issuecomment-2477375663
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
+eval "$(starship init zsh)"

@@ -1,0 +1,65 @@
+# palette:
+#  - white:     #FFFFFF  (default text, muted, headers, documents)
+#  - blue:      #B3E5FC  (dirs, symlinks, links, source/compressed)
+#  - turquoise: #80DEEA  (executables, media, accents)
+#  - alert:     #FF8A80  (temp, broken symlinks)
+
+colourful: false
+
+filekinds:
+  normal: {foreground: "#FFFFFF"}
+  directory: {foreground: "#B3E5FC"}
+  symlink: {foreground: "#B3E5FC"}
+  pipe: {foreground: "#FFFFFF"}
+  block_device: {foreground: "#B3E5FC"}
+  char_device: {foreground: "#B3E5FC"}
+  socket: {foreground: "#FFFFFF"}
+  special: {foreground: "#B3E5FC"}
+  executable: {foreground: "#80DEEA"}
+  mount_point: {foreground: "#FFFFFF"}
+
+users:
+  user_you: {foreground: "#FFFFFF"}
+  user_root: {foreground: "#FFFFFF"}
+  user_other: {foreground: "#B3E5FC"}
+  group_yours: {foreground: "#FFFFFF"}
+  group_other: {foreground: "#FFFFFF"}
+  group_root: {foreground: "#FFFFFF"}
+
+links:
+  normal: {foreground: "#B3E5FC"}
+  multi_link_file: {foreground: "#80DEEA"}
+
+file_type:
+  image: {foreground: "#80DEEA"}
+  video: {foreground: "#80DEEA"}
+  music: {foreground: "#80DEEA"}
+  lossless: {foreground: "#80DEEA"}
+  crypto: {foreground: "#FFFFFF"}
+  document: {foreground: "#FFFFFF"}
+  compressed: {foreground: "#B3E5FC"}
+  temp: {foreground: "#FF8A80"}
+  compiled: {foreground: "#80DEEA"}
+  build: {foreground: "#FFFFFF"}
+  source: {foreground: "#B3E5FC"}
+
+punctuation: {foreground: "#FFFFFF"}
+date: {foreground: "#80DEEA"}
+inode: {foreground: "#FFFFFF"}
+blocks: {foreground: "#FFFFFF"}
+header: {foreground: "#FFFFFF"}
+octal: {foreground: "#80DEEA"}
+flags: {foreground: "#B3E5FC"}
+
+symlink_path: {foreground: "#B3E5FC"}
+control_char: {foreground: "#80DEEA"}
+broken_symlink: {foreground: "#FF8A80"}
+broken_path_overlay: {foreground: "#FFFFFF"}
+
+filenames:
+  # Custom filename-based overrides
+  # Cargo.toml: {icon: {glyph: 🦀}}
+
+extensions:
+  # Custom extension-based overrides
+  # rs: {filename: {foreground: Red}, icon: {glyph: 🦀}}
