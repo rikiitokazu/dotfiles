@@ -14,7 +14,7 @@ Common macOS apps and tools.
 - Install with Homebrew:
   - `alfred` (cask)
   - `aerospace` (cask)
-  - `font-hack-nerd-font` (cask)
+  - `font-hack-nerd-font` or any nerd font (cask)
   - `iterm2` (cask)
   - `bat`
   - `chezmoi`
