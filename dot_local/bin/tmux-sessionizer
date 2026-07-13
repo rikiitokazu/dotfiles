@@ -8,6 +8,7 @@ PANE_CACHE_FILE="$PANE_CACHE_DIR/panes.cache"
 # Tmux Sessionizer by ThePrimeagen
 # https://github.com/theprimeagen/tmux-sessionizer
 # Changes:
+# - min-depth = 0
 # - if no fzf match, use the inputted string to create a session at the home directory
 
 if [[ -f "$CONFIG_FILE" ]]; then

@@ -27,5 +27,8 @@ Common macOS apps and tools.
   - `jq`
   - `lazygit`
   - `neovim`
+  - `sesh`
+  - `television`
+  - `tldr`
   - `tmux`
   - `zoxide`
