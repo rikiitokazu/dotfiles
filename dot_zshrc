@@ -83,7 +83,7 @@ function sesh-sessions() {
     exec <&1
     local sessions
     local selected  
-    sessions=$(sesh list -t -c -i -z)
+    sessions=$(sesh list -t -c -z)
     selected=$(printf "%s\n" "$sessions" | fzf --ansi --height 50% --bind='enter:accept-or-print-query' --reverse --border --prompt ' ')
     zle reset-prompt > /dev/null 2>&1 || true
     if [[ $'\n'"$sessions"$'\n' == *$'\n'"$selected"$'\n'* ]]; then
