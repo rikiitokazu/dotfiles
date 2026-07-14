@@ -57,6 +57,11 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # ===============================
+# Eza (better ls)
+# ===============================
+export EZA_CONFIG_DIR=~/.config/eza
+
+# ===============================
 # Starship
 # ===============================
 # https://github.com/starship/starship/issues/3418#issuecomment-2477375663
@@ -64,7 +69,7 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
       "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
     zle -N zle-keymap-select "";
 fi
-
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 
@@ -76,11 +81,16 @@ function sesh-sessions() {
   {
     exec </dev/tty
     exec <&1
-    local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt ' ')
+    local sessions
+    local selected  
+    sessions=$(sesh list -t -c -i -z)
+    selected=$(printf "%s\n" "$sessions" | fzf --ansi --height 50% --bind='enter:accept-or-print-query' --reverse --border --prompt ' ')
     zle reset-prompt > /dev/null 2>&1 || true
-    [[ -z "$session" ]] && return
-    sesh connect $session
+    if [[ $'\n'"$sessions"$'\n' == *$'\n'"$selected"$'\n'* ]]; then
+      sesh connect "$selected"
+    else
+      tmux new-session -s "$selected" -c "$HOME"
+    fi
   }
 }
 
