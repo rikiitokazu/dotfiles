@@ -11,7 +11,7 @@ Common macOS apps and tools.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-- Install with Homebrew:
+- Install with Homebrew or Github:
   - `alfred` (cask)
   - `aerospace` (cask)
   - `font-hack-nerd-font` or any nerd font (cask)
@@ -26,6 +26,7 @@ Common macOS apps and tools.
   - `glow`
   - `jq`
   - `lazygit`
+  - `lazyvim` 
   - `neovim`
   - `sesh`
   - `television`
