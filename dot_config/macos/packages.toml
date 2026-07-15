@@ -1,0 +1,30 @@
+[brew]
+packages = [
+    "bat",
+    "chezmoi",
+    "eza",
+    "fd",
+    "fzf",
+    "git",
+    "git-delta",
+    "glow",
+    "jq",
+    "lazygit",
+    "neovim",
+    "sesh",
+    "tldr",
+    "tmux",
+    "zoxide",
+]
+
+casks = [
+    "alfred", # spotlight
+    "aerospace", # tiling manager
+    "font-hack-nerd-font",
+    "iterm2",
+]
+
+
+[[curl]]
+url = "https://alexpasmantier.github.io/television/install.sh"
+args = ["-f", "-s", "-S", "-L"]
