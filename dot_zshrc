@@ -43,6 +43,7 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 # ===============================
 # Eza (better ls)
 # ===============================
+export EZA_CONFIG_DIR=~/.config/eza
 alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias la="eza --color=always --long --all --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias ll="eza --color=always --long --all --icons=always --no-time"
@@ -57,9 +58,9 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # ===============================
-# Eza (better ls)
+# Bat (better cat)
 # ===============================
-export EZA_CONFIG_DIR=~/.config/eza
+alias cat="bat"
 
 # ===============================
 # Starship
@@ -98,3 +99,8 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
+
+# ===============================
+# Nvim
+# ===============================
+alias vi="nvim"
