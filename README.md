@@ -2,7 +2,7 @@
 
 > Managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
-### Example 
+### Picture 
 ![Picture](imgs/terminal.png)
 
 ### Instructions
