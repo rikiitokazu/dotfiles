@@ -43,12 +43,13 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
+
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -70,6 +71,7 @@ on-mode-changed = []
     outer.bottom =     10
     outer.top =        10
     outer.right =      10
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -132,11 +134,12 @@ on-mode-changed = []
     alt-5 = 'workspace 5'
     alt-6 = 'workspace 6'
     alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
-    alt-a = 'workspace a'
-    alt-b = 'workspace b'
-    alt-c = 'workspace c'
+
+    # alt-8 = 'workspace 8'
+    # alt-9 = 'workspace 9'
+    # alt-a = 'workspace a'
+    # alt-b = 'workspace b'
+    # alt-c = 'workspace c'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -146,11 +149,12 @@ on-mode-changed = []
     alt-shift-5 = 'move-node-to-workspace 5'
     alt-shift-6 = 'move-node-to-workspace 6'
     alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
-    alt-shift-a = 'move-node-to-workspace a'
-    alt-shift-b = 'move-node-to-workspace b'
-    alt-shift-c = 'move-node-to-workspace c'
+
+    # alt-shift-8 = 'move-node-to-workspace 8'
+    # alt-shift-9 = 'move-node-to-workspace 9'
+    # alt-shift-a = 'move-node-to-workspace a'
+    # alt-shift-b = 'move-node-to-workspace b'
+    # alt-shift-c = 'move-node-to-workspace c'
 
     alt-shift-f = 'fullscreen'
 
@@ -184,3 +188,7 @@ on-mode-changed = []
 [[on-window-detected]]
 if.app-id = "com.googlecode.iterm2"
 run = "move-node-to-workspace 3"
+
+
+
+
