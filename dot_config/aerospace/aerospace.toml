@@ -21,6 +21,25 @@ accordion-padding = 30
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 
+# Workspaces matching FLOATING_WORKSPACES (see [exec.env-vars] at the bottom)
+# are floating; all others are tiling.
+# Applies the layout to every window in the workspace you switch to.
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  '''
+if [[ "$AEROSPACE_FOCUSED_WORKSPACE" =~ $FLOATING_WORKSPACES ]]; then
+    layout=floating
+else
+    layout=tiling
+fi
+
+aerospace list-windows --workspace "$AEROSPACE_FOCUSED_WORKSPACE" --format "%{window-id}" | while read -r id; do
+    aerospace layout "$layout" --window-id "$id"
+done
+'''
+]
+
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
 #               tall monitor (anything higher than wide) gets vertical orientation
@@ -32,7 +51,16 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = "move-mouse window-lazy-center"
+
+# The exec-and-forget part floats windows opened while already on a floating
+# workspace (exec-on-workspace-change only fires on workspace switches).
+on-focus-changed = [
+  'move-mouse window-lazy-center',
+  '''exec-and-forget
+if [[ "$(aerospace list-workspaces --focused)" =~ $FLOATING_WORKSPACES ]]; then
+    aerospace layout floating
+fi''',
+]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -50,6 +78,13 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7"]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
 
+
+# Environment variables available to all exec-* commands.
+# FLOATING_WORKSPACES is a regex: edit it here to change which workspaces float,
+# e.g. '^(5|6|7)$'
+[exec.env-vars]
+FLOATING_WORKSPACES = '^(6|7)$'
+PATH = '/opt/homebrew/bin:${PATH}'
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
